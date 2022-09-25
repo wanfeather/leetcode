@@ -70,11 +70,10 @@ int search(table *t, int key)
     return -1;
 }
 
-int twoSum(int *nums, int numsSize, int target, int *returnSize)
-{
+int* twoSum(int* nums, int numsSize, int target, int* returnSize){
     table *t = createTable(numsSize);
-    int i, com;
-    int *result = (int *)malloc(sizeof(int) * 2);
+    int i, complement;
+    int *result = (int*)malloc(sizeof(int)* *returnSize);
     
     *returnSize = 2;
     
@@ -82,14 +81,14 @@ int twoSum(int *nums, int numsSize, int target, int *returnSize)
         insert(t, nums[i], i);
     for(i = 0; i < numsSize; i++)
     {
-        com = search(t, target - nums[i]);
-        if(com != -1 && com != i)
+        complement = search(t, target - nums[i]);
+        if(complement!= -1 && complement!= i)
         {
-            result[0] = com;
+            result[0] = complement;
             result[1] = i;
         }
     }
     free(t);
-    
+
     return result;
 }
